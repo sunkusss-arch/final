@@ -1,0 +1,22 @@
+{
+  "name": "final_project",
+  "dockerComposeFile": ["../docker-compose.yaml"],
+  "service": "py",
+  "workspaceFolder": "/work",
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "pip install -r requirements.txt",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+
+        "cweijan.vscode-database-client2",
+        "cweijan.vscode-database-client2-mysql",
+
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-mysql"
+      ]
+    }
+  }
+}
