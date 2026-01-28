@@ -1,0 +1,7 @@
+pandas
+sqlalchemy
+pymysql
+jupyter
+ipykernel
+polars
+pyarrow

@@ -1,0 +1,35 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: team_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: final_db
+      MYSQL_USER: team
+      MYSQL_PASSWORD: team
+    ports:
+      - "3366:3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+  py:
+    build: .
+    container_name: team_py
+    restart: unless-stopped
+    working_dir: /work
+    volumes:
+      - ./:/work
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: final_db
+      DB_USER: team
+      DB_PASSWORD: team
+    depends_on:
+      - mysql
+    ports:
+      - "8888:8888"
+    command: bash -lc "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+
+volumes:
+  mysqldata:
